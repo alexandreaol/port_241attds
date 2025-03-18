@@ -1,24 +1,25 @@
-name: Deploy para paginas do GitHub
+name: Deploy para GitHub Pages
 
-on: 
+on:
   push:
     branches:
-      - main
+      - main  # Executa quando há mudanças na branch principal
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-  
+
     steps:
-      - name: Checa o repositorio
+      - name: Checkout do repositório
         uses: actions/checkout@v3
 
-      - name: Configura GitHub Pages
+      - name: Configurar GitHub Pages
         uses: actions/configure-pages@v3
 
-      - name: Cria os arquivos para Deploy
+      - name: Criar artefato para deploy
         uses: actions/upload-pages-artifact@v2
-          with:
-            path: . 
+        with:
+          path: .  # Publica todos os arquivos do repositório
 
-      - name: Publica no GitPages
+      - name: Publicar no GitHub Pages
         uses: actions/deploy-pages@v1
