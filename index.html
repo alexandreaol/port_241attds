@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alunos - Turma 241ATTDS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #6a0dad, #ff8c00);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .aluno-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            justify-content: center;
+        }
+        .aluno-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        .aluno-card:hover {
+            transform: scale(1.05);
+        }
+        .aluno-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        .btn {
+            display: block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #6a0dad;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: #ff8c00;
+        }
+        .match-btn {
+            margin-top: 10px;
+            display: block;
+            padding: 8px 15px;
+            background-color: #ff8c00;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+        }
+        .match-btn:hover {
+            background-color: #6a0dad;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Encontre Seu Talento na Turma 241ATTDS</h1>
+        <p>Conecte-se com os melhores alunos e faça um match com seu futuro profissional</p>
+    </header>
+    
+    <div class="container">
+        <div class="aluno-grid">
+            <script>
+                const alunos = [
+                    { nome: "Bernado Santos Aguiar", link: "#", img: "https://via.placeholder.com/100", email: "mailto:joao@email.com", whatsapp: "https://wa.me/5511999999999" },
+                    { nome: "Carlos Daniel Silva", link: "#", img: "https://via.placeholder.com/100", email: "mailto:maria@email.com", whatsapp: "https://wa.me/5511988888888" },
+                    { nome: "Daniel Antunes Souza", link: "#", img: "https://via.placeholder.com/100", email: "mailto:pedro@email.com", whatsapp: "https://wa.me/5511977777777" },
+                    { nome: "Heverton Renee", link: "#", img: "https://via.placeholder.com/100", email: "mailto:ana@email.com", whatsapp: "https://wa.me/5511966666666" },
+                    { nome: "Hudson Davi", link: "#", img: "https://via.placeholder.com/100", email: "mailto:joao@email.com", whatsapp: "https://wa.me/5511999999999" },
+                    { nome: "João Geraldo Santos", link: "#", img: "https://via.placeholder.com/100", email: "mailto:maria@email.com", whatsapp: "https://wa.me/5511988888888" },
+                    { nome: "João Victor Gusmão", link: "#", img: "https://via.placeholder.com/100", email: "mailto:pedro@email.com", whatsapp: "https://wa.me/5511977777777" },
+                    { nome: "Júlio Cesar Barbosa", link: "#", img: "https://via.placeholder.com/100", email: "mailto:ana@email.com", whatsapp: "https://wa.me/5511966666666" },
+                    { nome: "Kauã Barbosa", link: "#", img: "https://via.placeholder.com/100", email: "mailto:joao@email.com", whatsapp: "https://wa.me/5511999999999" },
+                    { nome: "Luiz Miguel Botelho", link: "#", img: "https://via.placeholder.com/100", email: "mailto:maria@email.com", whatsapp: "https://wa.me/5511988888888" },
+                    { nome: "Matheus Carlos Martins", link: "#", img: "https://via.placeholder.com/100", email: "mailto:pedro@email.com", whatsapp: "https://wa.me/5511977777777" },
+                    { nome: "Matheus Viana Dantas", link: "#", img: "https://via.placeholder.com/100", email: "mailto:ana@email.com", whatsapp: "https://wa.me/5511966666666" },
+                    { nome: "Rhuan Gabriel Santos", link: "#", img: "https://via.placeholder.com/100", email: "mailto:ana@email.com", whatsapp: "https://wa.me/5511966666666" }
+                ];
+                
+                document.write(alunos.map(aluno => `
+                    <div class="aluno-card">
+                        <img src="${aluno.img}" alt="${aluno.nome}">
+                        <h3>${aluno.nome}</h3>
+                        <p>Descrição breve do aluno.</p>
+                        <button class="btn" onclick="window.open('${aluno.link}', '_blank')">Ver Portfólio</button>
+                        <button class="match-btn" onclick="matchAluno('${aluno.nome}', '${aluno.email}', '${aluno.whatsapp}')">Match</button>
+                    </div>
+                `).join(''));
+            </script>
+        </div>
+    </div>
+</body>
+</html>
