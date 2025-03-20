@@ -5,6 +5,10 @@ on:
     branches:
       - main  # Executa quando há mudanças na branch principal
 
+permissions:
+  contents: write  # Permissão para escrever conteúdo
+  pages: write     # Permissão para escrever na branch do GitHub Pages
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -17,7 +21,7 @@ jobs:
         uses: actions/configure-pages@v3
 
       - name: Criar artefato para deploy
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v1  # Tente v1 se v2 não funcionar
         with:
           path: .  # Publica todos os arquivos do repositório
 
