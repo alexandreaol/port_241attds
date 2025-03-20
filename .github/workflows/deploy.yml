@@ -24,9 +24,7 @@ jobs:
       - name: Criar artefato para deploy
         uses: actions/upload-pages-artifact@v3  # Pode tentar também @v2 se funcionar
         with: 
-          path: |
-            .
-            ./avatar
+          path:  .
 
       - name: Publicar no GitHub Pages
         uses: actions/deploy-pages@v4
