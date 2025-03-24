@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alunos - Turma 241ATTD</title>
+    <title>Alunos - Turma 241ATTDS</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -46,34 +46,50 @@
             height: 100px;
             border-radius: 50%;
         }
-        .btn {
-            display: block;
+        .btn, .match-btn {
             margin-top: 10px;
             padding: 8px 15px;
-            background-color: #6a0dad;
-            color: white;
-            text-decoration: none;
             border-radius: 5px;
             cursor: pointer;
             border: none;
+            color: white;
             text-align: center;
+        }
+        .btn {
+            background-color: #6a0dad;
         }
         .btn:hover {
             background-color: #ff8c00;
         }
         .match-btn {
-            margin-top: 10px;
-            display: block;
-            padding: 8px 15px;
             background-color: #ff8c00;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            cursor: pointer;
-            border: none;
         }
         .match-btn:hover {
             background-color: #6a0dad;
+        }
+        /* Estilo do Modal */
+        #modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+        }
+        #modalContent {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            width: 300px;
+        }
+        #fecharModal {
+            float: right;
+            cursor: pointer;
+            color: red;
         }
     </style>
 </head>
@@ -89,17 +105,17 @@
                 const alunos = [
                     { nome: "Bernado Santos Aguiar", link: "https://b3rnardo0.github.io/meu_portif-lio/", img: "avatar/Bernardo Santos.jpg", email: "bebe0005bella@email.com", whatsapp: "https://wa.me/5538991215861", descricao: "Cursando Desenvolvimento de Sistemas"},
                     { nome: "Carlos Daniel Silva", link: "https://carlosdaniel-droid.github.io/port/", img: "https://via.placeholder.com/100", email: "ninjaextreme684@gmail.com", whatsapp: "https://wa.me/5511988888888", descricao: "Desenvolvedor back-end." },
-                    { nome: "Daniel Antunes Souza", link: "#", img: "https://via.placeholder.com/100", email: "mailto:pedro@email.com", whatsapp: "https://wa.me/5511977777777" },
+                    { nome: "Daniel Antunes Souza", link: "#", img: "https://via.placeholder.com/100", email: "pedro@email.com", whatsapp: "https://wa.me/5511977777777" },
                     { nome: "Heverton Renee", link: "https://heverkasta.github.io/portfolio", img: "./avatar/hever.png", email: "heverkasta.dv@gmail.com", whatsapp: "https://wa.me/5538991281972" },
                     { nome: "Hudson Davi", link: "https://hudsondh01.github.io/meu_portfoli/", img: "https://i.pinimg.com/736x/dd/7e/c6/dd7ec6c05f337fb597ef051624e8fb46.jpg", email: "Hudsondavi370@gmail.com", whatsapp: "https://wa.me/38998706453" },
-                    { nome: "João Geraldo Santos", link: "https://joaogeraldos.github.io/Portifolio/", img: "avatar/Joao_Geraldo.jpg", email: "mailto:maria@email.com", whatsapp: "https://wa.me/5511988888888", descricao: "Desenvolvedor back-end." },
+                    { nome: "João Geraldo Santos", link: "https://joaogeraldos.github.io/Portifolio/", img: "avatar/Joao_Geraldo.jpg", email: "maria@email.com", whatsapp: "https://wa.me/5511988888888", descricao: "Desenvolvedor back-end." },
                     { nome: "João Victor Gusmão", link: "https://gusmxx13.github.io/meuportifolio/", img: "https://gusmxx13.github.io/meuportifolio/", email: "jv330967@gmail.com", whatsapp: "https://wa.me/5511977777777" },
-                    { nome: "Júlio Cesar Barbosa", link: "#", img: "https://via.placeholder.com/100", email: "mailto:ana@email.com", whatsapp: "https://wa.me/5511966666666" },
-                    { nome: "Kauã Barbosa", link: "#", img: "https://via.placeholder.com/100", email: "mailto:joao@email.com", whatsapp: "https://wa.me/5511999999999" },
-                    { nome: "Luiz Miguel Botelho", link: "#", img: "https://via.placeholder.com/100", email: "mailto:maria@email.com", whatsapp: "https://wa.me/5511988888888" },
-                    { nome: "Matheus Carlos Martins", link: "#", img: "https://via.placeholder.com/100", email: "mailto:pedro@email.com", whatsapp: "https://wa.me/5511977777777" },
-                    { nome: "Matheus Viana Dantas", link: "matheusoneca.github.io/Matheus-Viana-Dantas/", img: "https://via.placeholder.com/100", email: "mailto:matheusvianad@hotmail.com", whatsapp: "https://wa.me/5538988373440" },
-                    { nome: "Rhuan Gabriel Santos", link: "#", img: "https://via.placeholder.com/100", email: "mailto:ana@email.com", whatsapp: "https://wa.me/5511966666666" }
+                    { nome: "Júlio Cesar Barbosa", link: "#", img: "https://via.placeholder.com/100", email: "ana@email.com", whatsapp: "https://wa.me/5511966666666" },
+                    { nome: "Kauã Barbosa", link: "#", img: "https://via.placeholder.com/100", email: "joao@email.com", whatsapp: "https://wa.me/5511999999999" },
+                    { nome: "Luiz Miguel Botelho", link: "#", img: "https://via.placeholder.com/100", email: "maria@email.com", whatsapp: "https://wa.me/5511988888888" },
+                    { nome: "Matheus Carlos Martins", link: "#", img: "https://via.placeholder.com/100", email: "pedro@email.com", whatsapp: "https://wa.me/5511977777777" },
+                    { nome: "Matheus Viana Dantas", link: "matheusoneca.github.io/Matheus-Viana-Dantas/", img: "https://via.placeholder.com/100", email: "matheusvianad@hotmail.com", whatsapp: "https://wa.me/5538988373440" },
+                    { nome: "Rhuan Gabriel Santos", link: "#", img: "https://via.placeholder.com/100", email: "ana@email.com", whatsapp: "https://wa.me/5511966666666" }
                 ];
                 
                 document.write(alunos.map(aluno => `
@@ -114,5 +130,35 @@
             </script>
         </div>
     </div>
+    
+    <!-- Modal -->
+    <div id="modal">
+        <div id="modalContent">
+            <span id="fecharModal">&times;</span>
+            <div id="infoAluno"></div>
+        </div>
+    </div>
+
+    <script>
+        function matchAluno(nome, email, whatsapp) {
+            const info = `
+                <p><strong>Nome:</strong> ${nome}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Whatsapp:</strong> <a href="${whatsapp}" target="_blank">Conversar no WhatsApp</a></p>
+            `;
+            document.getElementById('infoAluno').innerHTML = info;
+            document.getElementById('modal').style.display = 'flex';
+        }
+        
+        document.getElementById('fecharModal').onclick = function() {
+            document.getElementById('modal').style.display = 'none';
+        }
+        
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('modal')) {
+                document.getElementById('modal').style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
